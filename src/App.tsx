@@ -1,24 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import {
+  OverlayTrigger,
+  Popover,
+} from 'react-bootstrap';
 
 function App() {
+  // Всплывающая help подсказка.
+  const popover = () => (
+    <Popover id="id1">
+      <Popover.Header as="h4" className="fs-6">
+        Заголовок
+      </Popover.Header>
+      <Popover.Body className="small">
+        Описание
+      </Popover.Body>
+    </Popover>
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button>Hello world</button>
+      <OverlayTrigger trigger="click" placement="right" overlay={popover()}>
+        <i className="bi bi-question-circle" />
+      </OverlayTrigger>
     </div>
   );
 }
